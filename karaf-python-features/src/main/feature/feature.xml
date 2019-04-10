@@ -1,0 +1,11 @@
+<features name="karaf-command-python-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0">
+
+    <feature name="karaf-command-python" version="${project.version}">
+        <feature version="${project.version}">karaf-command-python</feature>
+        <conditional>
+            <condition>shell</condition>
+            <bundle>mvn:org.apache.karaf.python.command/karaf-python-command/${project.version}</bundle>
+        </conditional>
+    </feature>
+
+</features>
