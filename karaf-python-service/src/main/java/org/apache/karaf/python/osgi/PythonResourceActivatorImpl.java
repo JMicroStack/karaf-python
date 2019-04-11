@@ -13,12 +13,21 @@ import java.util.stream.Collectors;
 
 import org.apache.karaf.python.api.PythonResourceActivator;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.wiring.BundleWiring;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
 
+
+
+@Component(immediate = true, service = PythonResourceActivator.class)
 public class PythonResourceActivatorImpl implements PythonResourceActivator{
 
+	@Activate
+	public void start(BundleContext context) {
+		System.out.println("Activate python extension");
+	}
+	
     public void unpack(Bundle bundle) throws IOException {
         System.out.println("\nPython: Unpack resources from <" + bundle.getSymbolicName() + "> [START]");
         

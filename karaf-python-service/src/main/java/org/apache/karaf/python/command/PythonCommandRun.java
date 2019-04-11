@@ -1,16 +1,10 @@
 package org.apache.karaf.python.command;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 import org.apache.karaf.shell.api.action.Action;
 import org.apache.karaf.shell.api.action.Command;
@@ -44,7 +38,7 @@ public class PythonCommandRun implements Action {
 				"python-simple", "hello.py").toString();
 		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);
 
-		String cmd = "python3.7 " + basePath;
+		String cmd = "python3 " + basePath;
 		Process p = Runtime.getRuntime().exec(cmd);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		
