@@ -164,9 +164,9 @@
 
 
 	<modules>
+	    <module>karaf-python-features</module>
 		<module>karaf-python-service</module>
-		<module>karaf-python-features</module>
-		<module>karaf-python-example</module>
 		<module>karaf-python-api</module>
+        <module>karaf-python-examples</module>
 	</modules>
 </project>

@@ -1,8 +1,6 @@
 package org.apache.karaf.python.command;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
@@ -14,11 +12,10 @@ import org.apache.karaf.shell.api.action.lifecycle.Reference;
 import org.apache.karaf.shell.api.action.lifecycle.Service;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.wiring.BundleWiring;
 
 @Service
-@Command(scope = "python", name = "run", description = "Run python script from jar.")
-public class PythonCommandRun implements Action {
+@Command(scope = "python", name = "service", description = "Install python service script from jar.")
+public class PythonCommandService implements Action {
 	
 	private PythonVersion pyEngine = PythonVersion.PYTHON3;
 
@@ -38,37 +35,11 @@ public class PythonCommandRun implements Action {
 
 		Bundle bundle = bundleContext.getBundle(bundleId);
 		String basePath = Paths
-				.get("scripts", bundle.getSymbolicName(), bundle.getVersion().toString(), "python", pathToScript).toAbsolutePath()
+				.get("scripts", bundle.getSymbolicName(), bundle.getVersion().toString(), "python", pathToScript)
 				.toString();
 
-		//String cmd = pyEngine.getEngineName() + " " + basePath;
-		String cmd = "/usr/local/lib/python/3.7.1/bin/python3.7" + " " + basePath;
-		System.out.println(cmd);
+		String cmd = pyEngine.getEngineName() + " " + basePath;
 		Process p = Runtime.getRuntime().exec(cmd);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		BufferedReader error = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-
-		String line;
-		while ((line = reader.readLine()) != null)
-			System.out.println(line);
-		try {
-			p.waitFor();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		while ((line = error.readLine()) != null)
-			System.out.println(line);
-		try {
-			p.waitFor();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		p.destroy();
-
-		long endTime = System.currentTimeMillis();
-
-		System.out.println("Execute time: " + (endTime - startTime) + "ms");
-
 		return null;
 	}
 }

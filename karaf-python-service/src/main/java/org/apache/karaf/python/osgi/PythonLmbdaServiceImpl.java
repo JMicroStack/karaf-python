@@ -6,26 +6,15 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.nio.file.Paths;
 
-import org.apache.karaf.python.api.PythonEngine;
+import org.apache.karaf.python.api.PythonLambda;
 import org.apache.karaf.python.api.PythonVersion;
 import org.osgi.framework.Bundle;
 import org.osgi.service.component.annotations.Component;
 
-@Component(immediate = true, service = PythonEngine.class)
-public class PythonEngineServiceImpl implements PythonEngine {
+@Component(immediate = true, service = PythonLambda.class)
+public class PythonLmbdaServiceImpl implements PythonLambda {
 
 	private PythonVersion pyEngine = PythonVersion.PYTHON3;
-
-	@Override
-	public InputStreamReader run(Bundle bundle, URI path) throws IOException {
-		String basePath = Paths
-				.get("scripts", bundle.getSymbolicName(), bundle.getVersion().toString(), "python", path.getPath())
-				.toString();
-
-		String cmd = pyEngine.getEngineName() + " " + basePath;
-		Process p = Runtime.getRuntime().exec(cmd);
-		return new InputStreamReader(p.getInputStream());
-	}
 
 	@Override
 	public String exec(Bundle bundle, URI path) throws IOException {
@@ -49,6 +38,18 @@ public class PythonEngineServiceImpl implements PythonEngine {
 		}
 		p.destroy();
 		return result.toString();
+	}
+
+	@Override
+	public Process install(Bundle bundle, URI path) throws IOException {
+		String basePath = Paths
+				.get("scripts", bundle.getSymbolicName(), bundle.getVersion().toString(), "python", path.getPath())
+				.toString();
+
+		String cmd = pyEngine.getEngineName() + " " + basePath;
+		Process process = Runtime.getRuntime().exec(cmd);
+
+		return process;
 	}
 
 }

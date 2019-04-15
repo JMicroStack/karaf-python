@@ -2,6 +2,7 @@ package org.apache.karaf.python.command;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+
 import org.apache.karaf.python.api.PythonResourceActivator;
 import org.apache.karaf.shell.api.action.Action;
 import org.apache.karaf.shell.api.action.Command;

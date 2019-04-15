@@ -2,19 +2,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
-		<groupId>org.apache.karaf.python</groupId>
-		<artifactId>karaf-python</artifactId>
+		<groupId>org.apache.karaf.python.examples</groupId>
+		<artifactId>karaf-python-examples</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-
-	<!-- bundle:install -s mvn:org.apache.karaf.python/karaf-python-service/0.0.1-SNAPSHOT -->
-
-	<groupId>org.apache.karaf.python</groupId>
-	<artifactId>karaf-python-service</artifactId>
-	<name>Karaf :: Python Core :: Service</name>
+	<groupId>org.apache.karaf.python.examples</groupId>
+	<artifactId>karaf-python-examples-simple</artifactId>
+	<name>Karaf :: Python Examples :: Simple run</name>
 	<packaging>bundle</packaging>
+
+	<!-- bundle:install -s mvn:org.apache.karaf.python.examples/karaf-python-examples-simple/0.0.1-SNAPSHOT -->
 
 	<dependencies>
 		<dependency>
@@ -26,11 +26,6 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.cmpn</artifactId>
 			<version>6.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.karaf.python</groupId>
-			<artifactId>karaf-python-api</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.karaf</groupId>
@@ -68,6 +63,18 @@
 			<artifactId>org.apache.karaf.jaas.config</artifactId>
 			<version>${apache.karaf.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.karaf.scr</groupId>
+			<artifactId>org.apache.karaf.scr.management</artifactId>
+			<version>${apache.karaf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.karaf.python</groupId>
+			<artifactId>karaf-python-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -78,7 +85,10 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Import-Package>*</Import-Package>
+						<Bundle-Activator>org.apache.karaf.python.examples.ExampleActivator</Bundle-Activator>
+						<Import-Package>
+							*
+						</Import-Package>
 						<Private-Package />
 						<Bundle-Description>${project.description}</Bundle-Description>
 					</instructions>

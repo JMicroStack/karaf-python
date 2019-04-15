@@ -11,9 +11,8 @@ public class ExampleActivator implements BundleActivator {
 	
     @Override
     public void start(BundleContext bundleContext) throws IOException {
-    	System.out.println("Python install example.");
+    	System.out.println("Python install source example.");
         Bundle bundle = bundleContext.getBundle();
-        
         ServiceReference reference = bundleContext.getServiceReference(PythonResourceActivator.class.getName());
         PythonResourceActivator pythonResource = (PythonResourceActivator) bundleContext.getService(reference);
         pythonResource.unpack(bundle);
@@ -21,7 +20,7 @@ public class ExampleActivator implements BundleActivator {
 
     @Override
     public void stop(BundleContext bundleContext) {
-    	System.out.println("Python uninstall example.");
+    	System.out.println("Python uninstall source example.");
     }
 
 }

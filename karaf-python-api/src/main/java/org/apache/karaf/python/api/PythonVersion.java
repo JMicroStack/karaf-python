@@ -1,4 +1,4 @@
-package org.apache.karaf.python.osgi;
+package org.apache.karaf.python.api;
 
 public enum PythonVersion {
 	PYTHON2("python2"),

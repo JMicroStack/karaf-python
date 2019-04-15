@@ -11,8 +11,8 @@ public class PythonBaseActivator extends BaseActivator {
 
 	@Override
 	public void doStart() {
-		System.out.println("Python Base Activator: [START]\n");
 		PythonResourceActivatorImpl pythonResourceActivator = new PythonResourceActivatorImpl();
 		register(PythonResourceActivator.class, pythonResourceActivator);
+		System.out.println("Python Registry Service: [OK]");
 	}
 }

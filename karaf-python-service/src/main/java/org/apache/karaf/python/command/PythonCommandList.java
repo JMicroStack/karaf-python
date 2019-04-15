@@ -8,7 +8,7 @@ import org.apache.karaf.shell.support.table.ShellTable;
 
 @Service
 @Command(scope = "python", name = "list", description = "List the current bookings")
-public class CommandListPython implements Action {
+public class PythonCommandList implements Action {
 	@Override
 	public Object execute() throws Exception {
 		ShellTable table = new ShellTable();

@@ -12,7 +12,7 @@
 
     <groupId>org.apache..karaf.python.features</groupId>
 	<artifactId>karaf-python-features</artifactId>
-	<name>Karaf :: Python :: Features</name>
+	<name>Karaf :: Python Core :: Features</name>
 	<packaging>pom</packaging>
 
 	<build>

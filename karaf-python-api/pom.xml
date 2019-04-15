@@ -10,7 +10,7 @@
 
 	<groupId>org.apache.karaf.python</groupId>
 	<artifactId>karaf-python-api</artifactId>
-	<name>Karaf :: Python :: API</name>
+	<name>Karaf :: Python Core :: API</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>
