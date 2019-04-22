@@ -19,7 +19,7 @@ public class ExampleRun {
 	@Activate
 	public void start(BundleContext bundleContext) throws IOException, URISyntaxException {
 		System.out.println("Start execute python script:");
-		String result = pythonEngine.exec(bundleContext.getBundle(), new URI("python-simple/main.py"));
-		System.out.println(result);
+		//String result = pythonEngine.exec(bundleContext.getBundle(), new URI("python-simple/main.py"));
+		//System.out.println(result);
 	}
 }

@@ -1,15 +1,12 @@
 #!/usr/bin/python3
 
 import sys
-print("CPython version:")
-print(sys.version)
 
+SCRIPT_HOME = os.environ.get('WORKHOME_PATH', None)
+print(f"Work home for python script: {SCRIPT_HOME}")
 
-def imul(v):
-    return v * v
+data = []
+for line in sys.stdin:
+    data.append(line)
 
-simple_json = {}
-for x in range(10):
-    simple_json[f"result_{str(x)}x{str(x)}"] = imul(x)
-
-print(simple_json)
+print(f"Input data: {data}")

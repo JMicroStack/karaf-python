@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.apache.karaf.python.examples</groupId>
-		<artifactId>karaf-python-examples</artifactId>
+		<groupId>org.apache.karaf.python</groupId>
+		<artifactId>karaf-python</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 
-	<groupId>org.apache.karaf.python.examples</groupId>
-	<artifactId>karaf-python-examples-lambda</artifactId>
-	<name>Karaf :: Python :: Example run python lambda</name>
-	<packaging>bundle</packaging>
+	<!-- bundle:install -s mvn:org.apache.karaf.python/karaf-python-engine/0.0.1-SNAPSHOT -->
 
-	<!-- bundle:install -s mvn:org.apache.karaf.python.examples/karaf-python-examples-lambda/0.0.1-SNAPSHOT -->
+	<groupId>org.apache.karaf.python</groupId>
+	<artifactId>karaf-python-engine</artifactId>
+	<name>Karaf :: Python :: Engine</name>
+	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>
@@ -64,17 +64,10 @@
 			<version>${apache.karaf.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.karaf.scr</groupId>
-			<artifactId>org.apache.karaf.scr.management</artifactId>
-			<version>${apache.karaf.version}</version>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.karaf.python</groupId>
-			<artifactId>karaf-python-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -85,12 +78,9 @@
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Activator>org.apache.karaf.python.examples.ExampleActivator</Bundle-Activator>
-						<Import-Package>
-							*
-						</Import-Package>
-						<Private-Package />
 						<Bundle-Description>${project.description}</Bundle-Description>
+						<Import-Package>*</Import-Package>
+						<Private-Package />
 					</instructions>
 				</configuration>
 				<extensions>true</extensions>
@@ -114,4 +104,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

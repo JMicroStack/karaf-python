@@ -1,7 +1,8 @@
 package org.apache.karaf.python.examples;
 
 import java.io.IOException;
-import org.apache.karaf.python.api.PythonResourceActivator;
+
+import org.apache.karaf.python.api.PythonResource;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -13,8 +14,8 @@ public class ExampleActivator implements BundleActivator {
     public void start(BundleContext bundleContext) throws IOException {
     	System.out.println("Python install source example.");
         Bundle bundle = bundleContext.getBundle();
-        ServiceReference reference = bundleContext.getServiceReference(PythonResourceActivator.class.getName());
-        PythonResourceActivator pythonResource = (PythonResourceActivator) bundleContext.getService(reference);
+        ServiceReference reference = bundleContext.getServiceReference(PythonResource.class.getName());
+        PythonResource pythonResource = (PythonResource) bundleContext.getService(reference);
         pythonResource.unpack(bundle);
     }
 

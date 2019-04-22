@@ -2,16 +2,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.apache.karaf.python</groupId>
-	<artifactId>karaf-python</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-
+	
 	<parent>
 		<groupId>org.apache.karaf</groupId>
 		<artifactId>karaf</artifactId>
 		<version>4.2.4</version>
 	</parent>
+	
+	
+	<groupId>org.apache.karaf.python</groupId>
+	<artifactId>karaf-python</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	
 
 	<name>Karaf :: Python :: Parent</name>
 
@@ -20,7 +24,6 @@
 			<name>The JMicroStack Team</name>
 			<email>krzysztof.kaczkowski@architekt-it.pl</email>
 			<url>http://jmicrostack.org</url>
-			<organization>Apache Software Foundation</organization>
 			<organizationUrl>http://apache.org/</organizationUrl>
 			<properties>
 				<picUrl>http://karaf.apache.org/images/karaf-logo.png</picUrl>
@@ -37,9 +40,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
-		<spif.wmq.version>9.0.0.4</spif.wmq.version>
-		<spif.camel.version>2.23.1</spif.camel.version>
-		<spif.flyway.version>5.0.6</spif.flyway.version>
+		<camel.version>2.23.1</camel.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -164,9 +165,7 @@
 
 
 	<modules>
-	    <module>karaf-python-features</module>
-		<module>karaf-python-service</module>
-		<module>karaf-python-api</module>
+		<module>karaf-python-engine</module>
         <module>karaf-python-examples</module>
 	</modules>
 </project>

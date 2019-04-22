@@ -11,7 +11,7 @@
 
 	<groupId>org.apache.karaf.python.examples</groupId>
 	<artifactId>karaf-python-examples-simple</artifactId>
-	<name>Karaf :: Python Examples :: Simple run</name>
+	<name>Karaf :: Python :: Example run python</name>
 	<packaging>bundle</packaging>
 
 	<!-- bundle:install -s mvn:org.apache.karaf.python.examples/karaf-python-examples-simple/0.0.1-SNAPSHOT -->
@@ -71,7 +71,7 @@
 
 		<dependency>
 			<groupId>org.apache.karaf.python</groupId>
-			<artifactId>karaf-python-api</artifactId>
+			<artifactId>karaf-python-engine</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

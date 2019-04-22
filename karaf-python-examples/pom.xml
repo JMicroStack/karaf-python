@@ -15,10 +15,12 @@
                 <relativePath>../pom.xml</relativePath>
         </parent>
 
-	<name>Karaf :: Python Examples :: Parent</name>
+	<name>Karaf :: Python :: Example parent</name>
 
 	<modules>
 		<module>karaf-python-examples-simple</module>
 		<module>karaf-python-examples-lambda</module>
+		<module>karaf-python-examples-service</module>
+		<module>karaf-python-examples-camel</module>
 	</modules>
 </project>

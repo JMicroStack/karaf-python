@@ -1,20 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.apache.karaf.python.examples</groupId>
-		<artifactId>karaf-python-examples</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-
-
-	<groupId>org.apache.karaf.python.examples</groupId>
-	<artifactId>karaf-python-examples-lambda</artifactId>
-	<name>Karaf :: Python :: Example run python lambda</name>
-	<packaging>bundle</packaging>
-
-	<!-- bundle:install -s mvn:org.apache.karaf.python.examples/karaf-python-examples-lambda/0.0.1-SNAPSHOT -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.apache.karaf.python.examples</groupId>
+    <artifactId>karaf-python-examples</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>karaf-python-examples-camel</artifactId>
+  <name>Karaf :: Python :: Example run python from camel</name>
+  <packaging>bundle</packaging>
+  
+  	<!-- bundle:install -s mvn:org.apache.karaf.python.examples/karaf-python-examples-camel/0.0.1-SNAPSHOT -->
 
 	<dependencies>
 		<dependency>
@@ -68,13 +65,11 @@
 			<artifactId>org.apache.karaf.scr.management</artifactId>
 			<version>${apache.karaf.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.karaf.python</groupId>
-			<artifactId>karaf-python-api</artifactId>
+			<artifactId>karaf-python-engine</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -84,8 +79,8 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
+					<Bundle-Activator>org.apache.karaf.python.examples.camel.Activator</Bundle-Activator>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-						<Bundle-Activator>org.apache.karaf.python.examples.ExampleActivator</Bundle-Activator>
 						<Import-Package>
 							*
 						</Import-Package>
