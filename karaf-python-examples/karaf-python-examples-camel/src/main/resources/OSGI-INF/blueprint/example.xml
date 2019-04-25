@@ -10,7 +10,7 @@
     http://camel.apache.org/schema/blueprint/camel-blueprint.xsd                  
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <camelContext id="example-simple-python" trace="false" xmlns="http://camel.apache.org/schema/blueprint">
-        <camel:package>org.apache.karaf.python.examples</camel:package>
+        <camel:package>org.jmicrostack.karaf.python.examples</camel:package>
         <route id="read_file">
             <from id="from_file" uri="file:/opt/data/tmp"/>
             <convertBodyTo type="java.lang.String" />

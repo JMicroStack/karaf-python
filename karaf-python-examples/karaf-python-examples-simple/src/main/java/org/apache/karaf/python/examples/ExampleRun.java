@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.apache.karaf.python.api.PythonEngine;
+import org.jmicrostack.karaf.python.api.PythonEngine;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;

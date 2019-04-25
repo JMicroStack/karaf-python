@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.apache.karaf.python.examples</groupId>
+		<groupId>org.jmicrostack.karaf.python.examples</groupId>
 		<artifactId>karaf-python-examples</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.apache.karaf.python.examples</groupId>
+	<groupId>org.jmicrostack.karaf.python.examples</groupId>
 	<artifactId>karaf-python-examples-simple</artifactId>
 	<name>Karaf :: Python :: Example run python</name>
 	<packaging>bundle</packaging>
@@ -70,7 +70,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.karaf.python</groupId>
+			<groupId>org.jmicrostack.karaf.python</groupId>
 			<artifactId>karaf-python-engine</artifactId>
 			<version>${project.version}</version>
 		</dependency>

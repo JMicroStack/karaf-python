@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.apache.karaf.python.examples</groupId>
+		<groupId>org.jmicrostack.karaf.python.examples</groupId>
 		<artifactId>karaf-python-examples</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 
-	<groupId>org.apache.karaf.python.examples</groupId>
+	<groupId>org.jmicrostack.karaf.python.examples</groupId>
 	<artifactId>karaf-python-examples-lambda</artifactId>
 	<name>Karaf :: Python :: Example run python lambda</name>
 	<packaging>bundle</packaging>
@@ -68,13 +68,11 @@
 			<artifactId>org.apache.karaf.scr.management</artifactId>
 			<version>${apache.karaf.version}</version>
 		</dependency>
-
 		<dependency>
-			<groupId>org.apache.karaf.python</groupId>
-			<artifactId>karaf-python-api</artifactId>
+			<groupId>org.jmicrostack.karaf.python</groupId>
+			<artifactId>karaf-python-engine</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

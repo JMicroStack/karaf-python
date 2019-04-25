@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.apache.karaf.python.api.PythonEngine;
+import org.jmicrostack.karaf.python.api.PythonEngine;
+import org.jmicrostack.karaf.python.api.PythonProcess;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -19,7 +20,6 @@ public class ExampleRun {
 	@Activate
 	public void start(BundleContext bundleContext) throws IOException, URISyntaxException {
 		System.out.println("Start execute python script:");
-		String result = pythonEngine.exec(bundleContext.getBundle(), new URI("python-simple/main.py"));
-		System.out.println(result);
+		PythonProcess result = pythonEngine.run(new URI("python-simple/main.py"), null);
 	}
 }

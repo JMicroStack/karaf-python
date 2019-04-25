@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   
   <parent>
-    <groupId>org.apache.karaf.python.examples</groupId>
+    <groupId>org.jmicrostack.karaf.python.examples</groupId>
     <artifactId>karaf-python-examples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
   
   <artifactId>karaf-python-examples-camel</artifactId>
@@ -66,7 +66,7 @@
 			<version>${apache.karaf.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.karaf.python</groupId>
+			<groupId>org.jmicrostack.karaf.python</groupId>
 			<artifactId>karaf-python-engine</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -79,7 +79,7 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
-					<Bundle-Activator>org.apache.karaf.python.examples.camel.Activator</Bundle-Activator>
+					<Bundle-Activator>org.jmicrostack.karaf.python.examples.camel.Activator</Bundle-Activator>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Import-Package>
 							*

@@ -2,7 +2,7 @@ package org.apache.karaf.python.examples;
 
 import java.io.IOException;
 
-import org.apache.karaf.python.api.PythonResource;
+import org.jmicrostack.karaf.python.api.PythonResource;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

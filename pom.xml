@@ -10,9 +10,9 @@
 	</parent>
 	
 	
-	<groupId>org.apache.karaf.python</groupId>
+	<groupId>org.jmicrostack.karaf.python</groupId>
 	<artifactId>karaf-python</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	
@@ -40,7 +40,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
-		<camel.version>2.23.1</camel.version>
+		<camel.version>2.23.2</camel.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -162,7 +162,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 
 	<modules>
 		<module>karaf-python-engine</module>
