@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
+import org.jmicrostack.karaf.python.PythonRuntimeException;
 import org.jmicrostack.karaf.python.PythonSimple;
 import org.jmicrostack.karaf.python.PythonSimpleResult;
 import org.jmicrostack.karaf.python.api.PythonVersion;
@@ -24,15 +25,17 @@ public class PythonSimpleProducer extends DefaultProducer {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		String argv = ((PythonSimpleEndpoint)this.getEndpoint()).getArgv();
-		
+		String argv = ((PythonSimpleEndpoint) this.getEndpoint()).getArgv();
+
 		PythonSimple pySimple = new PythonSimple(PythonVersion.PYTHON3,
 				((PythonSimpleEndpoint) this.getEndpoint()).getContext().getBundle());
+		pySimple.setPythonVersion(((PythonSimpleComponent) ((PythonSimpleEndpoint) this.getEndpoint()).getComponent())
+				.getPythonVersion());
 		PythonSimpleResult result = pySimple.run(new URI(((PythonSimpleEndpoint) this.getEndpoint()).getPath()),
 				exchange.getIn().getBody().toString(), argv, null);
 		exchange.getOut().setBody(result.getResult());
 		if (result.isError()) {
-			LOGGER.error(result.getError());
+			throw new PythonRuntimeException(result.getError());
 		}
 	}
 }

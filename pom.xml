@@ -12,10 +12,9 @@
 	
 	<groupId>org.jmicrostack.karaf.python</groupId>
 	<artifactId>karaf-python</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>4.2.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	
 
 	<name>Karaf :: Python :: Parent</name>
 
@@ -44,7 +43,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-
+	
 	<repositories>
 		<!-- Apache snapshots -->
 		<repository>

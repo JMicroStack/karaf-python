@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-    xmlns:camel="http://camel.apache.org/schema/blueprint"
-    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0                                https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                                       http://camel.apache.org/schema/blueprint                                http://camel.apache.org/schema/blueprint/camel-blueprint.xsd                              http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                                     http://camel.apache.org/schema/spring                             http://camel.apache.org/schema/spring/camel-spring.xsd">
-    <bean class="org.jmicrostack.karaf.python.camel.PythonSimpleComponent"
-        id="python3" scope="prototype">
-        <property name="context" ref="blueprintBundleContext"/>
-    </bean>
+	xmlns:camel="http://camel.apache.org/schema/blueprint"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0                                
+	https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                                       
+	http://camel.apache.org/schema/blueprint                                
+	http://camel.apache.org/schema/blueprint/camel-blueprint.xsd                              
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                                     
+	http://camel.apache.org/schema/spring                             
+	http://camel.apache.org/schema/spring/camel-spring.xsd">
+	<bean
+		class="org.jmicrostack.karaf.python.camel.PythonSimpleComponent"
+		id="python3" scope="prototype">
+		<property name="context" ref="blueprintBundleContext" />
+		<property name="pythonEngineVersion" value="PYTHON37" />
+	</bean>
 </blueprint>

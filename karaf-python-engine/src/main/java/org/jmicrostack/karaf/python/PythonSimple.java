@@ -36,16 +36,18 @@ public class PythonSimple {
 	public void setPythonVersion(PythonVersion pyVerison) {
 		this.pyEngine = pyVerison;
 	}
-
+	
 	public void setContext(Bundle context) {
 		this.context = context;
 	}
 
 	public PythonSimpleResult run(URI pathToScript, String data, String args, String[] env) throws IOException {
-		
-		Path basePath = Paths.get("scripts", context.getSymbolicName(),
-				context.getVersion().toString(), "python", pathToScript.toString()).toAbsolutePath();
-		
+
+		if ( args == null)
+			args = "";
+		Path basePath = Paths.get("scripts", context.getSymbolicName(), context.getVersion().toString(), "python",
+				pathToScript.toString()).toAbsolutePath();
+
 		String cmd = pyEngine.getEngineName() + " " + basePath.toString();
 		Process pyProcess = Runtime.getRuntime().exec(
 				new String[] { pyEngine.getEngineName(), basePath.toString(), args },
@@ -58,29 +60,36 @@ public class PythonSimple {
 		StringBuffer result = new StringBuffer();
 		StringBuffer error = new StringBuffer();
 
-		// Write input data to script by pipe
-		if (data != null) {
-			sdata.write(data);
-			sdata.close();
-		}
-
-		// Read result
 		String line;
-		while ((line = sreader.readLine()) != null)
-			result.append(line);
 		try {
-			pyProcess.waitFor();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+			// Write input data to script by pipe
+			if (data != null) {
+				sdata.write(data);
+				sdata.close();
+			}
 
-		// Read error
-		while ((line = serror.readLine()) != null)
-			error.append(line);
-		try {
-			pyProcess.waitFor();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			// Read result
+			while ((line = sreader.readLine()) != null)
+				result.append(line);
+			try {
+				pyProcess.waitFor();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			// Read error
+			while ((line = serror.readLine()) != null)
+				error.append(line);
+			try {
+				pyProcess.waitFor();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		} catch (Exception e) {
+			while ((line = serror.readLine()) != null)
+				error.append(line);
+			System.out.println(error.toString());
 		}
 
 		pyProcess.destroy();
