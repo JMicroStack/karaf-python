@@ -41,7 +41,7 @@ public class PythonSimple {
 		this.context = context;
 	}
 
-	public PythonSimpleResult run(URI pathToScript, String data, String args, String[] env) throws IOException {
+	public PythonSimpleResult run(URI pathToScript, Object data, String args, String[] env) throws IOException {
 
 		if ( args == null)
 			args = "";
@@ -51,7 +51,7 @@ public class PythonSimple {
 		String cmd = pyEngine.getEngineName() + " " + basePath.toString();
 		Process pyProcess = Runtime.getRuntime().exec(
 				new String[] { pyEngine.getEngineName(), basePath.toString(), args },
-				new String[] { "PYWORK_HOME=" + basePath.getParent().toString() });
+				new String[]  { "PYWORK_HOME=" + basePath.getParent().toString(), "KARAF_HOME=" + System.getProperty("karaf.home")});
 
 		BufferedReader sreader = new BufferedReader(new InputStreamReader(pyProcess.getInputStream()));
 		BufferedReader serror = new BufferedReader(new InputStreamReader(pyProcess.getErrorStream()));
@@ -64,7 +64,7 @@ public class PythonSimple {
 		try {
 			// Write input data to script by pipe
 			if (data != null) {
-				sdata.write(data);
+				sdata.write(data.toString());
 				sdata.close();
 			}
 

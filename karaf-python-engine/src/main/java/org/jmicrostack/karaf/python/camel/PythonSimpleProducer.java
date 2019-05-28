@@ -26,13 +26,28 @@ public class PythonSimpleProducer extends DefaultProducer {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		String argv = ((PythonSimpleEndpoint) this.getEndpoint()).getArgv();
-
+		
+		StringBuffer pythonHeaders = new StringBuffer();
+		if ( argv == null) {
+			pythonHeaders.append("{");
+			for(Map.Entry<String, Object> header : exchange.getIn().getHeaders().entrySet()) {
+				if (header.getKey().startsWith("python_")){
+					pythonHeaders.append("\"" + header.getKey().substring(7, header.getKey().length()) + "\":");
+					pythonHeaders.append("\"" + header.getValue().toString() + "\"");
+					pythonHeaders.append(",");
+				}
+			}
+			pythonHeaders.append("\"_\":\"python\"");
+			pythonHeaders.append("}");
+			argv = pythonHeaders.toString();
+		}
+		
 		PythonSimple pySimple = new PythonSimple(PythonVersion.PYTHON3,
 				((PythonSimpleEndpoint) this.getEndpoint()).getContext().getBundle());
 		pySimple.setPythonVersion(((PythonSimpleComponent) ((PythonSimpleEndpoint) this.getEndpoint()).getComponent())
 				.getPythonVersion());
 		PythonSimpleResult result = pySimple.run(new URI(((PythonSimpleEndpoint) this.getEndpoint()).getPath()),
-				exchange.getIn().getBody().toString(), argv, null);
+				exchange.getIn().getBody(), argv, null);
 		exchange.getOut().setBody(result.getResult());
 		if (result.isError()) {
 			throw new PythonRuntimeException(result.getError());

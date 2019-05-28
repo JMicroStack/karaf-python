@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.jmicrostack.karaf.python</groupId>
 		<artifactId>karaf-python</artifactId>
-		<version>4.2.4-SNAPSHOT</version>
+		<version>4.2.5-SNAPSHOT</version>
 	</parent>
 
 	<!-- bundle:install -s mvn:org.jmicrostack.karaf.python/karaf-python-engine/0.0.1-SNAPSHOT -->

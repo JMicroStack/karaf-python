@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jmicrostack.karaf.python.examples</groupId>
 	<artifactId>karaf-python-examples</artifactId>
-	<version>4.2.4-SNAPSHOT</version>
+	<version>4.2.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 
