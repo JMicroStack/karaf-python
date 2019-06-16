@@ -179,4 +179,11 @@
 		<module>karaf-python-engine</module>
         <module>karaf-python-examples</module>
 	</modules>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 </project>
