@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.jmicrostack.karaf.python.examples</groupId>
+		<groupId>com.github.jmicrostack</groupId>
 		<artifactId>karaf-python-examples</artifactId>
-		<version>4.2.5-SNAPSHOT</version>
+		<version>2.0</version>
 	</parent>
 
-	<groupId>org.jmicrostack.karaf.python.examples</groupId>
 	<artifactId>karaf-python-examples-simple</artifactId>
 	<name>Karaf :: Python :: Example run python</name>
 	<packaging>bundle</packaging>
