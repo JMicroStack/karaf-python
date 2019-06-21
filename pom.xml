@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.apache.karaf</groupId>
 		<artifactId>karaf</artifactId>
-		<version>4.2.5</version>
+		<version>4.2.6</version>
 	</parent>
 	
 	
@@ -51,11 +51,11 @@
 	</prerequisites>
 
 	<properties>
-		<apache.karaf.version>4.2.4</apache.karaf.version>
+		<apache.karaf.version>4.2.6</apache.karaf.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<java.version>1.8</java.version>
-		<camel.version>2.23.2</camel.version>
+		<camel.version>2.24.0</camel.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
