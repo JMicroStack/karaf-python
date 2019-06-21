@@ -10,7 +10,7 @@
 
 	<!-- bundle:install -s mvn:org.jmicrostack.karaf.python/karaf-python-engine/4.2.5-SNAPSHOT -->
 
-	<groupId>org.jmicrostack.karaf.python</groupId>
+	<groupId>com.github.jmicrostack</groupId>
 	<artifactId>karaf-python-engine</artifactId>
 	<name>jmicrostack-camel-cpython</name>
 	<packaging>bundle</packaging>
