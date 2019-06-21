@@ -3,6 +3,7 @@ package org.jmicrostack.karaf.python;
 public class PythonSimpleResult {
 	private String result;
 	private String error;
+	private String log;
 	
 	public PythonSimpleResult(String result, String error)
 	{
@@ -19,7 +20,7 @@ public class PythonSimpleResult {
 	}
 	
 	public boolean isError() {
-		if (this.error == null || this.error.length() == 0)
+		if (this.error == null || this.error.length() == 0 || !this.error.contains("Traceback"))
 			return false;
 		return true;
 	}

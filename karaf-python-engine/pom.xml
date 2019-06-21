@@ -8,7 +8,7 @@
 		<version>4.2.5-SNAPSHOT</version>
 	</parent>
 
-	<!-- bundle:install -s mvn:org.jmicrostack.karaf.python/karaf-python-engine/0.0.1-SNAPSHOT -->
+	<!-- bundle:install -s mvn:org.jmicrostack.karaf.python/karaf-python-engine/4.2.5-SNAPSHOT -->
 
 	<groupId>org.jmicrostack.karaf.python</groupId>
 	<artifactId>karaf-python-engine</artifactId>
@@ -76,6 +76,7 @@
 				<artifactId>maven-bundle-plugin</artifactId>
 				<configuration>
 					<instructions>
+					    <Bundle-Activator>org.jmicrostack.karaf.python.tracker.PythonListenerActivator</Bundle-Activator>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Import-Package>*</Import-Package>

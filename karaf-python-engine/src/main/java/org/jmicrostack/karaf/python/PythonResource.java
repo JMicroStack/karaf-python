@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.apache.camel.util.FileUtil;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.wiring.BundleRequirement;
 import org.osgi.framework.wiring.BundleRevision;
@@ -28,20 +29,18 @@ import org.slf4j.LoggerFactory;
 
 public class PythonResource {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PythonResource.class);
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(PythonResource.class); 
+	
 	public void unpack(Bundle bundle) throws IOException {
-		LOGGER.info("Python: Unpack resources from <" + bundle.getSymbolicName() + "/" + bundle.getVersion().toString()
-				+ ">");
-
 		String basePath = Paths.get(System.getProperty("karaf.home"), "scripts", bundle.getSymbolicName(), bundle.getVersion().toString()).toString();
+		LOGGER.info("Python install resources to: " + basePath.toString());
 		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);
 		List<Path> installScripts = new ArrayList<>();
 		Collection<String> resources = bundleWiring.listResources("/python", "*", BundleWiring.LISTRESOURCES_RECURSE);
 		for (String resource : resources) {
 			if (resource.endsWith("\\") || resource.endsWith("/")) {
 				String destinationPath = Paths.get(basePath, resource).toString();
-				LOGGER.info("MD: " + resource);
+				LOGGER.debug("md: " + resource);
 				File file = new File(destinationPath);
 				file.mkdirs();
 			} else {
@@ -50,7 +49,7 @@ public class PythonResource {
 						.collect(Collectors.joining("\n"));
 
 				String destinationPath = Paths.get(basePath, resource).toString();
-				LOGGER.info("CP: " + destinationPath);
+				LOGGER.debug("cp: " + destinationPath);
 				
 				String dirPaths = Paths.get(basePath, resource).getParent().toString();
 				File file = new File(dirPaths);
@@ -67,6 +66,12 @@ public class PythonResource {
 			Set<Bundle> dependency = dependencyResolver(bundle);
 			postUnpack(basePath, installScripts, dependency);
 		}
+	}
+	
+	public void remove(Bundle bundle) {
+		String modulePath = Paths.get(System.getProperty("karaf.home"), "scripts", bundle.getSymbolicName(), bundle.getVersion().toString()).toString();
+		LOGGER.info("Python uninstall resources from: " + modulePath);
+		FileUtil.removeDir(new File(modulePath));
 	}
 
 	/**
@@ -118,14 +123,13 @@ public class PythonResource {
 				bundleDependencies.add(providerBundle);
 			}
 		}
-
 		return Collections.unmodifiableSet(bundleDependencies);
 	}
 
 	private boolean postUnpack(String basePath, List<Path> installScripts, Set<Bundle> pythonDependency) throws IOException {
 		String pathsToPythonModules = String.join(" ", getPathsForPythonModules(pythonDependency));
 		for (Path installscript : installScripts) {
-			LOGGER.info("Post install: " + installscript);
+			LOGGER.info("Python module post install: " + installscript);
 			
 			Process p = Runtime.getRuntime().exec(
 					new String[] { "bash", installscript.toString(), pathsToPythonModules },

@@ -164,6 +164,5 @@
 
 	<modules>
 		<module>karaf-python-engine</module>
-        <module>karaf-python-examples</module>
 	</modules>
 </project>

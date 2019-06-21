@@ -19,6 +19,9 @@ public class PythonSimpleEndpoint extends DefaultEndpoint {
 	
 	 @UriPath(name = "argv")
 	 String argv;
+	 
+	 @UriPath(name = "user")
+	 String userName;
 
 	public PythonSimpleEndpoint(final Component component, final String endpointUri, final String path,
 			Map<String, Object> parameters) {
@@ -51,6 +54,14 @@ public class PythonSimpleEndpoint extends DefaultEndpoint {
 	
 	public void setArgv(String argv) {
 		this.argv = argv;
+	}
+	
+	public String getUser() {
+		return this.userName;
+	}
+	
+	public void setUser(String userName) {
+		this.userName = userName;
 	}
 
 	@Override
