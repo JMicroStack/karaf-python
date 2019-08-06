@@ -24,10 +24,14 @@ public class PythonListenerActivator implements BundleActivator, BundleListener 
 	@Override
 	public void bundleChanged(BundleEvent event) {
 		String bundleKey = event.getBundle().getSymbolicName() + ":" + event.getBundle().getVersion().toString();
-		if (event.getType() == event.INSTALLED || event.getType() == event.UPDATED) {
-			URL python = event.getBundle().getResource("python");
-			if (python != null) {
-				LOGGER.info("Python install module " + bundleKey);
+		LOGGER.info("Process module <" + BundleListenerInfo.typeAsString(event) + ">: " + bundleKey);
+		if (event.getBundle() != null && (event.getType() == event.INSTALLED || event.getType() == event.UPDATED)) {
+			URL pythonResource = event.getBundle().getResource("python");
+			if (pythonResource != null) {
+				if (event.getType() == event.INSTALLED)
+					LOGGER.info("Python install module: " + bundleKey);
+				else
+					LOGGER.info("Python update module: " + bundleKey);
 				pythonBundle.put(bundleKey, event.getBundle());
 				installPythonResource(event.getBundle());
 			}
