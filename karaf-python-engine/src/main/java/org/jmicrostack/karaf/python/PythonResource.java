@@ -7,8 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,8 +31,8 @@ import org.slf4j.LoggerFactory;
 
 public class PythonResource {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PythonResource.class); 
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PythonResource.class);
+
 	public void unpack(Bundle bundle) throws IOException {
 		String basePath = Paths.get(System.getProperty("karaf.home"), "scripts", bundle.getSymbolicName(), bundle.getVersion().toString()).toString();
 		LOGGER.info("Python install resources to: " + basePath.toString());
@@ -44,20 +46,17 @@ public class PythonResource {
 				File file = new File(destinationPath);
 				file.mkdirs();
 			} else {
-				InputStream stream = bundle.getEntry(resource).openStream();
-				String result = new BufferedReader(new InputStreamReader(stream)).lines()
-						.collect(Collectors.joining("\n"));
+				InputStream inputStream = bundle.getEntry(resource).openStream();
+				Path destPath = Paths.get(basePath, resource);
 
-				String destinationPath = Paths.get(basePath, resource).toString();
-				LOGGER.debug("cp: " + destinationPath);
-				
-				String dirPaths = Paths.get(basePath, resource).getParent().toString();
+				LOGGER.debug("Copying: " + resource + " to destination: " + destPath);
+
+				String dirPaths = destPath.getParent().toString();
 				File file = new File(dirPaths);
 				file.mkdirs();
-				
-				BufferedWriter writer = new BufferedWriter(new FileWriter(destinationPath));
-				writer.write(result);
-				writer.close();
+
+				Files.copy(inputStream, destPath, StandardCopyOption.REPLACE_EXISTING);
+
 				if (resource.endsWith("install.sh"))
 					installScripts.add(Paths.get(basePath, resource).toAbsolutePath());
 			}
